@@ -16,9 +16,12 @@ form {
 }
 
 hr {
-  height: auto;
+  height: 5px;
+  width: 100%;
   margin-top: 5px;
   margin-bottom: 5px;
+  border: none;
+  background-color: #000000;
 }
 
 /* styling for the button-counter div */
