@@ -1,4 +1,49 @@
-new-tweet {
+/* styling for the new tweet form */
+.new-tweet {
+  width: 100vw;
   display: flex;
-  justify-content: ;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+/* styling for the form */
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+hr {
+  height: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* styling for the button-counter div */
+.button-counter {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* styling for the new tweet button */
+.tweet-button {
+  font-family: Bungee;
+  color: #FFFFFF;
+  background-color: #4056A1;
+}
+
+/* styling for the counter */
+.counter {
+  font-family: Bungee;
+}
+
+/* styling for the new tweet text area */
+textarea {
+  width: 100%;
+  display: flex;
+  justify-content: stretch;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }

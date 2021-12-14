@@ -1,3 +1,5 @@
+/* styling for the header */
+
 header {
   height: calc(100vh - 120px);
   width: 100vw;
@@ -5,10 +7,10 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #232600;
-  background-image: url("https://www.transparenttextures.com/patterns/tileable-wood-colored.png");
+  background-color: #ebe232;
+  background-image: url("https://www.transparenttextures.com/patterns/light-honeycomb-dark.png");
 }
 
 h2 {
-  color:chocolate;
+  color: #4056A1;
 }
