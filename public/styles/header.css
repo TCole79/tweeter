@@ -1,0 +1,14 @@
+header {
+  height: calc(100vh - 120px);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #232600;
+  background-image: url("https://www.transparenttextures.com/patterns/tileable-wood-colored.png");
+}
+
+h2 {
+  color:chocolate;
+}

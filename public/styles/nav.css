@@ -1,0 +1,24 @@
+nav {
+  position: relative;
+  height: 120px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  font-family: "Bungee";
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 1.5em;
+}
+
+.newTweet {
+  font-family: "Source Sans Pro";
+}
+
+.fas {
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  color: rgb(255, 0, 0);
+}
