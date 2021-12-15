@@ -1,6 +1,6 @@
 /* styling for the new tweet form */
 .new-tweet {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -19,7 +19,7 @@ hr {
   height: 5px;
   width: 100%;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   border: none;
   background-color: #000000;
 }

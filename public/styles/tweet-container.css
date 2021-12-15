@@ -15,6 +15,7 @@
 .tweet-header {
   width: 100%;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   padding-left: 15px;
   padding-right: 15px;
@@ -33,8 +34,11 @@
   width: 75px;
 }
 
-.name {
-  justify-content: flex-start; 
+.header-left-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-left: 15px;
 }
 
 .handle {
@@ -46,11 +50,20 @@
   justify-content: flex-start; 
 }
 
+.icons {
+  width: 150px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .icons .fas {
-  justify-content: column; 
   color: #4056A1;
 }
 
 .icons .fas:hover {
   color: rgba(167, 144, 14, 0.383);
+}
+
+.character-content {
+  padding-left: 15px;
 }

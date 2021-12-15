@@ -1,8 +1,9 @@
 /* styling for the nav element */
 
 nav {
-  position: relative;
-  height: 120px;
+  position: fixed;
+  top: 0px;
+  height: 100px;
   width: 100vw;
   display: flex;
   justify-content: space-between;
