@@ -19,22 +19,10 @@
 // const tweetBox = $(document.getElementById("#tweet-text"));
 
 
-$(document).ready(function () {
-
-  const tweetData = [{
-    user: {
-      name: "Newton",
-      avatars: "https://i.imgur.com/73hZDYK.png",
-      handle: "@SirIsaac",
-    },
-    content: {
-      text: "If I have seen further it is by standing on the shoulders of giants",
-    },
-    "created_at": 1461116232227,
-  }];
+$(document).ready(function() {
 
   const createTweetElement = function(tweet) {
-    let $tweet = $(`<article class="tweet-container">
+    const $tweet = $(`<article class="tweet-container">
     <header class="tweet-header" >
       <div class="header-left-content">
         <img src="${tweet.user.avatars}" />
@@ -64,8 +52,8 @@ $(document).ready(function () {
   // console.log($tweet); // to see what it looks like
   // $("#tweets-container").append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
-
   const renderTweets = function(tweets) {
+    $("#tweets-container").html(""); // look at this html method
     // loops through tweets
     for (let tweet of tweets) {
       // calls createTweetElement for each tweet
@@ -74,11 +62,47 @@ $(document).ready(function () {
       $("#tweets-container").append($tweet);
     }
   };
+  
+  // makes an ajax GET request to local server
+  const loadTweets = function() { // is this correct?
+    $.ajax({
+      url: "/tweets/",
+      method: "GET",
+      
+    }).then(
+      (tweets) => {
+      // pseudo code - display the tweet content with all associated data
+        renderTweets(tweets);
+      }
+    );
+  };
+  
+  //const $tweetButton = $("#tweet-button"); // make an easy to read/understand variable name
+  
+  $("#tweet-form").submit(function(event) {
+    event.preventDefault();
+    console.log('event test ', event); // does nothing as far as I can see
+    
+    const serialized = $("#tweet-text").serialize(); // Serialize form data (which I call 'tweet-text') and send to server as query string
+    console.log('serialized test ', serialized);
+    // Christian's example below I changed at the start
+    $.ajax({
+      url: "/tweets/",
+      method: "POST",
+      data: serialized,
+    }).then(() => {
+      // pseudo code - display the tweet content with all associated data
+      loadTweets();
 
-  renderTweets(tweetData);
+      // $("#tweet-text"). what goes here?
+    });
+  });
+  
+  
+  
+  
+  
+  loadTweets();
+  //renderTweets($tweet); // this is not working now I removed the hard coded examples
 
-  // $tweetBox.on("submit", function () {
-  //   event.preventDefault();
-
-  // });
 });
