@@ -1,3 +1,8 @@
+/* Navigation Bar: REQUIREMENTS
+    is fixed to the top
+    has padding on both sides
+    contains Compose button */
+
 /* styling for the nav element */
 
 nav {
@@ -17,11 +22,18 @@ nav {
 
 .newTweet {
   font-family: "Source Sans Pro";
+  color: #FFFFFF;
+  background-color: #4056A1;
 }
 
 .fas {
   display: flex;
   justify-content: center;
-  height: 70px;
+  height: 75px;
+  color: rgb(255, 0, 0);
+}
+
+.fas:hover {
+  cursor: pointer;
   color: rgb(255, 0, 0);
 }

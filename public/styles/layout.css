@@ -5,7 +5,6 @@
  */
 html {
   box-sizing: border-box;
-  font-family: Bungee;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -24,14 +23,19 @@ body {
 
 main {
   width: 90%;
-  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   color: #545149;
+  margin: auto;
   padding: 10px;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+/* Rule for laptops/desktops that also have minimum 1024 screen resolution */
+@media screen and (min-width: 1024px) {
+
+}
