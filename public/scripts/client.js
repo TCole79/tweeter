@@ -4,21 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// clean representation:
-// $('<div/>', {
-//   'id':'myDiv',
-//   'class':'myClass',
-//   'text':'Text Only',
-// }).on('click', function(){
-//   alert(this.id); // myDiv
-// }).appendTo('body');
-
-// most efficient way to create HTML elements with jquery:
-// $(document.createElement('div'));
-// my prior example
-// const tweetBox = $(document.getElementById("#tweet-text"));
-
-
 $(document).ready(function() {
 
   const createTweetElement = function(tweet) {
@@ -31,7 +16,7 @@ $(document).ready(function() {
       <p class="handle">${tweet.user.handle}</p>
     </header>
     <div class="character-content" >
-      <p>${tweet.content.text}</p>
+      <p>${escape(tweet.content.text)}</p>
     </div>
     <hr/>
     <footer class="tweet-footer">
@@ -46,11 +31,14 @@ $(document).ready(function() {
 
     return $tweet;
   };
+
+  // ${escape(data.content.text)} this is code to stop cross-scripting attacks
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
   
-  //const $tweet = createTweetElement(tweetData);
-  // Test / driver code (temporary)
-  // console.log($tweet); // to see what it looks like
-  // $("#tweets-container").append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
   const renderTweets = function(tweets) {
     $("#tweets-container").html(""); // look at this html method
@@ -59,46 +47,45 @@ $(document).ready(function() {
       // calls createTweetElement for each tweet
       let $tweet = createTweetElement(tweet);
       // takes return value and appends it to the tweets container
-      $("#tweets-container").append($tweet);
+      $("#tweets-container").prepend($tweet);
     }
   };
-  
+
   // makes an ajax GET request to local server
-  const loadTweets = function() { // is this correct?
+  const loadTweets = function() {
     $.ajax({
       url: "/tweets/",
       method: "GET",
-      
     }).then(
       (tweets) => {
-      // pseudo code - display the tweet content with all associated data
         renderTweets(tweets);
       }
     );
   };
-  
+
   //const $tweetButton = $("#tweet-button"); // make an easy to read/understand variable name
   
   $("#tweet-form").submit(function(event) {
     event.preventDefault();
-    console.log('event test ', event); // does nothing as far as I can see
     
-    const serialized = $("#tweet-text").serialize(); // Serialize form data (which I call 'tweet-text') and send to server as query string
-    console.log('serialized test ', serialized);
-    // Christian's example below I changed at the start
+    const serialized = $(this).serialize(); // Serialize form data (which I call 'tweet-text') and send to server as query string
+    const length = $("#tweet-text").val().length;
+
+    if (!length) {
+      return alert ("Your tweet cannot be empty.");
+    }
+    if (length > 140) {
+      return alert ("Your tweet length is too long, please keep to 140 characters.");
+    }
+
     $.ajax({
       url: "/tweets/",
       method: "POST",
       data: serialized,
     }).then(() => {
-      // pseudo code - display the tweet content with all associated data
       loadTweets();
-
-      // $("#tweet-text"). what goes here?
     });
   });
-  
-  
   
   
   
