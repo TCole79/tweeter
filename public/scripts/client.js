@@ -6,6 +6,8 @@
 
 $(document).ready(function() {
 
+  $(".error-message").hide();
+
   const createTweetElement = function(tweet) {
     const $tweet = $(`<article class="tweet-container">
     <header class="tweet-header" >
@@ -70,24 +72,25 @@ $(document).ready(function() {
     
     const serialized = $(this).serialize(); // Serialize form data (which I call 'tweet-text') and send to server as query string
     const length = $("#tweet-text").val().length;
+    const error = $(".error-message");
 
     if (!length) {
-      return alert ("Your tweet cannot be empty.");
+      error.text("Your tweet cannot be empty!").slideDown();
     }
-    if (length > 140) {
-      return alert ("Your tweet length is too long, please keep to 140 characters.");
+    else if (length > 140) {
+      error.text("Your tweet length cannot exceed 140 characters.").slideDown();
+    } else {
+      error.slideUp("slow");
+      $.ajax({
+        url: "/tweets/",
+        method: "POST",
+        data: serialized,
+      }).then(() => {
+        loadTweets();
+      });
     }
-
-    $.ajax({
-      url: "/tweets/",
-      method: "POST",
-      data: serialized,
-    }).then(() => {
-      loadTweets();
-    });
   });
-  
-  
+    
   
   loadTweets();
   //renderTweets($tweet); // this is not working now I removed the hard coded examples
