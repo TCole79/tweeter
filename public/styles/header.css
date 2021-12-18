@@ -1,16 +1,16 @@
-/* styling for the header */
-
 header.top-header {
+  height: 75vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #ebe232;
-  background-image: url("https://www.transparenttextures.com/patterns/light-honeycomb-dark.png");
+  background-color: #3d371e;
+  background-image: url("https://www.transparenttextures.com/patterns/tileable-wood-colored.png");
   padding-top: 150px;
+  margin: 150px 50px 50px 50px;
 }
 
 h2 {
-  color: #4056A1;
+  color: #FFFFFF;
 }

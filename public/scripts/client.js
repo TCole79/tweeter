@@ -4,8 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function () {
-
+$(document).ready(function() {
   const createTweetElement = function (tweet) {
     const $tweet = $(`<article class="tweet-container">
     <header class="tweet-header" >
@@ -40,17 +39,13 @@ $(document).ready(function () {
   };
 
   const renderTweets = function (tweets) {
-    $("#tweets-container").html(""); // look at this html method
-    // loops through tweets
+    $("#tweets-container").html("");
     for (let tweet of tweets) {
-      // calls createTweetElement for each tweet
       let $tweet = createTweetElement(tweet);
-      // takes return value and appends it to the tweets container
       $("#tweets-container").prepend($tweet);
     }
   };
 
-  // makes an ajax GET request to local server
   const loadTweets = function () {
     $.ajax({
       url: "/tweets/",
@@ -60,19 +55,19 @@ $(document).ready(function () {
     });
   };
 
-  //const $tweetButton = $("#tweet-button"); // make an easy to read/understand variable name
-
-  $("#tweet-form").submit(function (event) {
+  $("#tweet-form").submit(function(event) {
     event.preventDefault();
 
-    const serialized = $(this).serialize(); // Serialize form data (which I call 'tweet-text') and send to server as query string
+    const serialized = $(this).serialize();
     const length = $("#tweet-text").val().length;
     const error = $(".error-message");
 
     if (!length) {
-      error.text("Your tweet cannot be empty!").slideDown();
+      error.text("Your tweet cannot be empty.").slideDown("slow");
     } else if (length > 140) {
-      error.text("Your tweet length cannot exceed 140 characters.").slideDown();
+      error
+        .text("Your tweet length cannot exceed 140 characters.")
+        .slideDown("slow");
     } else {
       error.slideUp("slow");
       $.ajax({
@@ -87,5 +82,4 @@ $(document).ready(function () {
   });
 
   loadTweets();
-  //renderTweets($tweet);
 });

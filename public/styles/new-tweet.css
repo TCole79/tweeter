@@ -1,4 +1,3 @@
-/* styling for the new tweet form */
 .new-tweet {
   width: 100%;
   display: flex;
@@ -7,9 +6,9 @@
   flex-direction: column;
   word-wrap: break-word;
   white-space: nowrap;
+  padding-top: 40px;
 }
 
-/* styling for the form */
 form {
   width: 100%;
   display: flex;
@@ -26,25 +25,21 @@ hr {
   background-color: #000000;
 }
 
-/* styling for the button-counter div */
 .button-counter {
   display: flex;
   justify-content: space-between;
 }
 
-/* styling for the new tweet button */
 .tweet-button {
   font-family: Bungee;
-  color: #FFFFFF;
-  background-color: #4056A1;
+  color: #ffffff;
+  background-color: #4056a1;
 }
 
-/* styling for the counter */
 .counter {
   font-family: Bungee;
 }
 
-/* styling for the new tweet text area */
 textarea {
   width: 100%;
   display: flex;

@@ -6,7 +6,9 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -27,15 +29,14 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   color: #545149;
-  margin: auto;
-  padding: 10px;
+  margin: 100px;
+  /* padding: 10px; */
 }
-
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
 
 /* Rule for laptops/desktops that also have minimum 1024 screen resolution */
 @media screen and (min-width: 1024px) {
-
+  body {
+    flex-direction: row;
+    display: flex;
+  }
 }
